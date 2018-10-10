@@ -12,7 +12,7 @@ public class MyDialog extends Dialog {
     public MyDialog(@NonNull Context context) {
 //        想要背景也是升起来的需要style和initDialog();
         super(context, R.style.Dialog_FullScreen);
-//        initDialog();
+        initDialog();
         setContentView(R.layout.fragment_dialog);
     }
 

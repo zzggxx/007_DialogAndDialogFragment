@@ -1,6 +1,10 @@
 package com.example.will.dialoganddialogfragment;
 
+import android.os.Bundle;
 import android.support.v7.app.AppCompatDialogFragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * 创建 DialogFragment 有两种方式：
@@ -83,12 +87,10 @@ public class MyDialogFragment extends AppCompatDialogFragment {
 
 
     /*---------------------------------创建复杂UI的方式---------------------------------------------*/
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        View v = inflater.inflate(R.layout.dialog, container, false);
-//        return v;
-//    }
-
-
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.dialog, container, false);
+        return v;
+    }
 }
