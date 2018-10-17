@@ -123,9 +123,27 @@ public class MyDialogFragment extends AppCompatDialogFragment implements View.On
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.sure:
+                if (mOnDialogClick != null) {
+                    mOnDialogClick.clickSure();
+                }
                 break;
             case R.id.cancel:
+                if (mOnDialogClick != null) {
+                    mOnDialogClick.clickCancel();
+                }
                 break;
         }
     }
+
+    interface OnDialogClick {
+        void clickSure();
+
+        void clickCancel();
+    }
+
+    public void setOnDialogClick(OnDialogClick onDialogClick) {
+        mOnDialogClick = onDialogClick;
+    }
+
+    OnDialogClick mOnDialogClick;
 }

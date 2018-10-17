@@ -80,6 +80,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Bundle bundle = new Bundle();
         bundle.putString("billingData", "1111111111111");
         mdf.setArguments(bundle);
+        mdf.setOnDialogClick(new MyDialogFragment.OnDialogClick() {
+            @Override
+            public void clickSure() {
+
+            }
+
+            @Override
+            public void clickCancel() {
+
+            }
+        });
 
         mdf.show(getSupportFragmentManager(), "df");
     }
