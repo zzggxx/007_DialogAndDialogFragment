@@ -1,10 +1,15 @@
 package com.example.will.dialoganddialogfragment;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
 /**
  * 创建 DialogFragment 有两种方式：
@@ -23,7 +28,8 @@ import android.view.ViewGroup;
  * DialogFragment不需要我们手动的管理生命周期并且他有自己的回退栈.
  */
 
-public class MyDialogFragment extends AppCompatDialogFragment {
+public class MyDialogFragment extends AppCompatDialogFragment implements View.OnClickListener {
+    private Context mContext;
 
     /*---------------------------------简单方式---------------------------------------------------*/
     /*--------1.系统简单的-------------*/
@@ -86,11 +92,40 @@ public class MyDialogFragment extends AppCompatDialogFragment {
     }*/
 
 
-    /*---------------------------------创建复杂UI的方式---------------------------------------------*/
+    /*---------------------------------创建复杂UI的方式,采用这种方式即可---------------------------------------------*/
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext = getActivity();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        initBackground();
         View v = inflater.inflate(R.layout.dialog, container, false);
+        initView(v);
         return v;
+    }
+
+    private void initView(View v) {
+        v.findViewById(R.id.sure).setOnClickListener(this);
+        v.findViewById(R.id.cancel).setOnClickListener(this);
+    }
+
+    private void initBackground() {
+        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getDialog().setCanceledOnTouchOutside(false);
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.sure:
+                break;
+            case R.id.cancel:
+                break;
+        }
     }
 }

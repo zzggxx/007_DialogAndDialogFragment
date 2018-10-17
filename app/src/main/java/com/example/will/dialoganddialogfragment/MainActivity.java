@@ -2,7 +2,6 @@ package com.example.will.dialoganddialogfragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -67,14 +66,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 dialog.show();
                 break;
             case R.id.clkf:
-                MyDialogFragment mdf = new MyDialogFragment();
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                mdf.show(ft, "df");
+                showDialogFragment();
                 break;
             case R.id.clka:
                 startActivity(new Intent(this, ActivityA.class));
                 break;
         }
+    }
+
+    private void showDialogFragment() {
+        MyDialogFragment mdf = new MyDialogFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("billingData", "1111111111111");
+        mdf.setArguments(bundle);
+
+        mdf.show(getSupportFragmentManager(), "df");
     }
 }
