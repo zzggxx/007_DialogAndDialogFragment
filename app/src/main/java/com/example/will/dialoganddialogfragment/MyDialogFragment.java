@@ -31,7 +31,7 @@ import android.view.Window;
 public class MyDialogFragment extends AppCompatDialogFragment implements View.OnClickListener {
     private Context mContext;
 
-    /*---------------------------------简单方式---------------------------------------------------*/
+    /*---------------------------------简单方式(也有两种)-------------------------------------*/
     /*--------1.系统简单的-------------*/
     /*@Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -92,7 +92,7 @@ public class MyDialogFragment extends AppCompatDialogFragment implements View.On
     }*/
 
 
-    /*---------------------------------创建复杂UI的方式,采用这种方式即可---------------------------------------------*/
+    /*------------------------创建复杂UI的方式,采用这种方式即可----------------------------*/
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
